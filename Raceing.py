@@ -1,4 +1,5 @@
 import pygame
+import random
 
 pygame.init()
 
@@ -27,11 +28,51 @@ class Car:
 
 class Cones:
     def __init__(self):
-        self.cone1 = self.x1, self.y1 = 0, 0
-        self.cone2 = self.x2, self.y2 = 0, 0
+        self.cones = [
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+            [random.randint(620, 780), -50],
+        ]
 
     def draw(self):
-        pass
+        pygame.draw.lines(screen, COLORS[1], True, [self.cones[0], self.cones[0][0] + 15, self.cones[0][1] + 10, self.cones[0][0] - 15, self.cones[0][1] + 15], 3)
 
     def change(self):
         pass
@@ -64,10 +105,12 @@ while not crashed:
                 car.x_change += 3
 
     car.x += car.x_change
+    cones.cones[0][1] -= 1
 
     display.fill(COLORS[0])
     background()
     car.car(car.x, car.y)
+    cones.draw()
     pygame.display.update()
 
     clock.tick(FPS)
